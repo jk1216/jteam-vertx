@@ -1,0 +1,6 @@
+com\jteam\vertx\common\package-info.class
+com\jteam\vertx\common\config\Log4jConfigurationServiceHandler.class
+com\jteam\vertx\common\RestAPIVerticle.class
+com\jteam\vertx\common\service\JdbcRepositoryWrapper.class
+com\jteam\vertx\common\BaseMicroserviceVerticle.class
+com\jteam\vertx\common\config\ConfigRetrieverHelper.class
