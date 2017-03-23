@@ -1,0 +1,10 @@
+{
+  "user.account.http.address": "localhost",
+  "user.account.http.port": 8002,
+  "api.name": "account",
+  "url": "jdbc:mysql://localhost:3306/jteam?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false",
+  "driver_class": "com.mysql.cj.jdbc.Driver",
+  "user": "root",
+  "password": "jackey",
+  "max_pool_size": 30
+}

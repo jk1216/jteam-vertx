@@ -16,7 +16,7 @@ import java.util.Optional;
  *
  * @author Eric Zhao
  */
-public class JdbcRepositoryWrapper {
+public class JdbcRepositoryWrapper { 
 
   protected final JDBCClient client;
 

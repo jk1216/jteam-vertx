@@ -41,7 +41,11 @@ public abstract class BaseMicroserviceVerticle extends AbstractVerticle {
   @Override
   public void start() throws Exception {
     // init service discovery instance
-    discovery = ServiceDiscovery.create(vertx, new ServiceDiscoveryOptions().setBackendConfiguration(config()));
+    discovery = ServiceDiscovery.create(vertx, new ServiceDiscoveryOptions().setBackendConfiguration(
+    		new JsonObject()
+            .put("host", "127.0.0.1")
+            .put("key", "records")
+    		));
 
     // init circuit breaker instance
     JsonObject cbOptions = config().getJsonObject("circuit-breaker") != null ?
