@@ -161,99 +161,117 @@
 		</dependency>
 	</dependencies>
 
+	
 	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-				<executions>
-					<execution>
-						<id>default-compile</id>
-						<configuration>
-							<annotationProcessors>
-								<annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-							</annotationProcessors>
-							<generatedSourcesDirectory>src/main/generated</generatedSourcesDirectory>
-							<compilerArgs>
-								<arg>-Acodegen.output=${project.basedir}/src/main</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-					<execution>
-						<id>default-testCompile</id>
-						<configuration>
-							<annotationProcessors>
-								<annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-							</annotationProcessors>
-							<generatedTestSourcesDirectory>src/test/generated</generatedTestSourcesDirectory>
-							<compilerArgs>
-								<arg>-Acodegen.output=${project.basedir}/src/</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-
 		<pluginManagement>
 			<plugins>
+				<!-- Configure the execution of the compiler to execute the codegen processor -->
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.6.1</version>
+					<version>3.3</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-shade-plugin</artifactId>
-					<version>3.0.0</version>
 					<executions>
 						<execution>
-							<phase>package</phase>
-							<goals>
-								<goal>shade</goal>
-							</goals>
+							<id>default-compile</id>
 							<configuration>
-								<transformers>
-									<transformer
-										implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-										<manifestEntries>
-											<Main-Class>io.vertx.core.Launcher</Main-Class>
-											<Main-Verticle>${main.verticle}</Main-Verticle>
-										</manifestEntries>
-									</transformer>
-									<transformer
-										implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-										<resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
-									</transformer>
-								</transformers>
-								<artifactSet>
-								</artifactSet>
-								<outputFile>${project.build.directory}/${project.artifactId}-fat.jar</outputFile>
+								<annotationProcessors>
+									<annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
+								</annotationProcessors>
+								<compilerArgs>
+									<arg>-AoutputDirectory=${project.basedir}/src/main</arg>
+								</compilerArgs>
 							</configuration>
 						</execution>
 					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-	</build>
 
-	<repositories>
-		<repository>
-			<id>snapshots-repo</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Main-Class>io.vertx.core.Launcher</Main-Class>
+										<Main-Verticle>${main.verticle}</Main-Verticle>
+									</manifestEntries>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+								</transformer>
+							</transformers>
+							<artifactSet>
+							</artifactSet>
+							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<id>run</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>io.vertx.core.Launcher</mainClass>
+							<arguments>
+								<argument>run</argument>
+								<argument>${main.verticle}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>run-app</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-jar</argument>
+								<argument>target/${project.artifactId}-${project.version}-fat.jar</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>staging</id>
+			<repositories>
+				<repository>
+					<id>staging</id>
+					<url>https://oss.sonatype.org/content/repositories/iovertx-3295</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+	
 </project>
