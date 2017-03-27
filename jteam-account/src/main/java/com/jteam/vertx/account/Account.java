@@ -51,7 +51,7 @@ public class Account {
 
   public String getPhone() {
     return phone;
-  }
+  } 
 
   public Account setPhone(String phone) {
     this.phone = phone;

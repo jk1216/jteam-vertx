@@ -23,6 +23,7 @@ var JAccountService = Java.type('com.jteam.vertx.account.AccountService');
 var Account = Java.type('com.jteam.vertx.account.Account');
 
 /**
+
  A service interface managing user accounts.
  <p>
  This service is an event bus service (aka. service proxy).

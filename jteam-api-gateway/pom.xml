@@ -12,9 +12,9 @@
 	<artifactId>jteam-api-gateway</artifactId>
 
 	<properties>
-		<main.verticle />
+		<main.verticle>com.jteam.vertx.gateway.APIGatewayVerticle</main.verticle>
 	</properties>
-
+ 
 	<dependencies>
 		<dependency>
 			<groupId>com.jteam.vertx</groupId>
@@ -22,4 +22,13 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	 
+	<build>
+		<plugins>
+			<plugin>
+				<!-- plugin to create a `fat-jar` -->
+				<artifactId>maven-shade-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

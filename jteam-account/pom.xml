@@ -10,10 +10,10 @@
 	</parent>
 
 	<artifactId>jteam-account</artifactId>
-
+ 
 	<properties>
 		<main.verticle>com.jteam.vertx.account.UserAccountVerticle</main.verticle>
-	</properties>
+	</properties> 
 
 	<dependencies>
 		<dependency>

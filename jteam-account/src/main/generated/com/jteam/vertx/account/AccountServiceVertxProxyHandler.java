@@ -44,7 +44,7 @@ import com.jteam.vertx.account.Account;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import com.jteam.vertx.account.AccountService;
-
+ 
 /*
   Generated Proxy code - DO NOT EDIT
   @author Roger the Robot

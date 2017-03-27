@@ -6,7 +6,7 @@ import com.jteam.vertx.common.BaseMicroserviceVerticle;
 
 import static com.jteam.vertx.account.AccountService.SERVICE_ADDRESS;
 import static com.jteam.vertx.account.AccountService.SERVICE_NAME;
-
+ 
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
 import io.vertx.serviceproxy.ProxyHelper;
@@ -22,7 +22,7 @@ public class UserAccountVerticle extends BaseMicroserviceVerticle {
 
 	  @Override
 	  public void start(Future<Void> future) throws Exception {
-	    super.start();
+	    super.start();	    
 	    accountService = new JdbcAccountServiceImpl(vertx, config());
 	    
 	    accountService.initializePersistence(resultHandler->{
@@ -34,7 +34,7 @@ public class UserAccountVerticle extends BaseMicroserviceVerticle {
 	    	}else{
 	    		System.out.println("数据库初始化失败:"+resultHandler.cause());
 	    	}
-	    	
+	    	 
 	    });
 	    // register the service proxy on event bus
 	    ProxyHelper.registerService(AccountService.class, vertx, accountService, SERVICE_ADDRESS);

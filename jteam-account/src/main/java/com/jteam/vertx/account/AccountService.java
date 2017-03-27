@@ -7,8 +7,8 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 
 import java.util.List;
-
-/**
+ 
+/** 
  * A service interface managing user accounts.
  * <p>
  * This service is an event bus service (aka. service proxy).
@@ -97,7 +97,7 @@ public interface AccountService {
    */
   @Fluent
   AccountService deleteAccount(String id, Handler<AsyncResult<Void>> resultHandler);
-
+ 
   /**
    * Delete all user accounts from the persistence
    *

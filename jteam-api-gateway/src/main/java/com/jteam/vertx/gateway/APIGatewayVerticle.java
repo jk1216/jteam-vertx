@@ -54,6 +54,7 @@ public class APIGatewayVerticle extends RestAPIVerticle {
     // static content
     router.route("/*").handler(StaticHandler.create());
 
+
     // create http server
     vertx.createHttpServer()
       .requestHandler(router::accept)
@@ -95,6 +96,8 @@ public class APIGatewayVerticle extends RestAPIVerticle {
             .filter(record -> record.getMetadata().getString("api.name") != null)
             .filter(record -> record.getMetadata().getString("api.name").equals(prefix))
             .findAny(); // simple load balance
+          
+         
           
           if (client.isPresent()) {
         	  

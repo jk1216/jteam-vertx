@@ -18,7 +18,7 @@ package com.jteam.vertx.account;
 
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.json.JsonArray;
-
+ 
 /**
  * Converter for {@link com.jteam.vertx.account.Account}.
  *
