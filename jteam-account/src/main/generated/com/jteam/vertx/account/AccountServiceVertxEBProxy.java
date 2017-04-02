@@ -37,13 +37,14 @@ import com.jteam.vertx.account.Account;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import com.jteam.vertx.account.AccountService;
- 
+
 /*
   Generated Proxy code - DO NOT EDIT
   @author Roger the Robot
 */
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class AccountServiceVertxEBProxy implements AccountService {
+
   private Vertx _vertx;
   private String _address;
   private DeliveryOptions _options;

@@ -23,7 +23,7 @@ import java.util.List;
 import com.jteam.vertx.account.Account;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
- 
+
 /**
  *
  * A service interface managing user accounts.

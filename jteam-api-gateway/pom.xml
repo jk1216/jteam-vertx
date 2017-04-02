@@ -14,15 +14,22 @@
 	<properties>
 		<main.verticle>com.jteam.vertx.gateway.APIGatewayVerticle</main.verticle>
 	</properties>
- 
+
 	<dependencies>
 		<dependency>
 			<groupId>com.jteam.vertx</groupId>
 			<artifactId>jteam-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-auth-jwt</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
-	 
+
 	<build>
 		<plugins>
 			<plugin>

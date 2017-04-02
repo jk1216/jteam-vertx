@@ -7,6 +7,7 @@ com\jteam\vertx\common\utils\Runner$GroovyEchoServerRunner.class
 com\jteam\vertx\common\utils\Runner$GroovyHttpSimpleServerRunner.class
 com\jteam\vertx\common\utils\Runner$RubyHttpProxyProxyRunner.class
 com\jteam\vertx\common\utils\Runner$RubyHttpSimpleFormUploadRunner.class
+com\jteam\vertx\common\functional\Functional.class
 com\jteam\vertx\common\service\JdbcRepositoryWrapper.class
 com\jteam\vertx\common\utils\Runner$GroovyHttpSimpleFormUploadRunner.class
 com\jteam\vertx\common\utils\Runner$JSVerticleAsyncStartRunner.class

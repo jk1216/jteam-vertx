@@ -43,7 +43,10 @@ public class RestUserAccountAPIVerticle extends RestAPIVerticle {
     router.get(API_RETRIEVE_ALL).handler(this::apiRetrieveAll);
     router.patch(API_UPDATE).handler(this::apiUpdateUser);
     router.delete(API_DELETE).handler(this::apiDeleteUser);
-
+    
+    //开启心跳检测
+    enableHeartbeatCheck(router, config());
+    
     String host = config().getString("user.account.http.address", "localhost");
     int port = config().getInteger("user.account.http.port", 8081);
 
